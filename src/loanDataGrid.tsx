@@ -9,7 +9,7 @@ export default function LoanDataGrid({ data }) {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr 1fr",
+          gridTemplateColumns: "0.1fr 1fr 1fr 1fr",
           gap: "10px",
           margin: "20px auto",
           border: "1px solid #ccc",
@@ -25,7 +25,7 @@ export default function LoanDataGrid({ data }) {
             padding: "5px",
           }}
         >
-          Installment Number
+          Row
         </div>
         <div
           style={{
