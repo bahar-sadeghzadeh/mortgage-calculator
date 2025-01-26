@@ -34,7 +34,7 @@ export default function LoanDataGrid({ data }) {
             padding: "5px",
           }}
         >
-          Principal Amount
+          Principal
         </div>
         <div
           style={{
@@ -52,7 +52,7 @@ export default function LoanDataGrid({ data }) {
             padding: "5px",
           }}
         >
-          Total Installment Amount
+          Installment
         </div>
 
         {/* Data Rows */}
