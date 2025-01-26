@@ -8,6 +8,7 @@ type TFormValues = {
   loanAmount: number | "";
   installmentCount: number | "";
   yearlyExtraPayment: number | "";
+  equalToPrincipal: true;
 };
 
 export default function LoanForm() {
@@ -17,16 +18,17 @@ export default function LoanForm() {
     loanAmount: "",
     installmentCount: "",
     yearlyExtraPayment: "",
+    equalToPrincipal: true,
   });
   const [data, setData] = useState<{ principal: number; interest: number }[]>(
     []
   );
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
     setFormValues({
       ...formValues,
-      [name]: parseFloat(value),
+      [name]: type === "checkbox" ? checked : value,
     });
   };
 
@@ -37,6 +39,7 @@ export default function LoanForm() {
       loanAmount,
       installmentCount,
       yearlyExtraPayment,
+      equalToPrincipal,
     } = formValues;
     e.preventDefault();
     setData(
@@ -45,7 +48,8 @@ export default function LoanForm() {
         tilgung,
         loanAmount,
         installmentCount,
-        yearlyExtraPayment
+        yearlyExtraPayment,
+        equalToPrincipal
       )
     );
   };
@@ -186,29 +190,53 @@ export default function LoanForm() {
           </div>
           <div>
             <label
-              htmlFor="yearlyExtraPayment"
               style={{
                 display: "block",
                 fontWeight: "500",
                 marginBottom: "5px",
               }}
             >
-              Yearly Extra Payment (€)
+              Yearly Extra Payment
             </label>
-            <input
-              type="number"
-              id="yearlyExtraPayment"
-              name="yearlyExtraPayment"
-              value={formValues.yearlyExtraPayment}
-              onChange={handleInputChange}
-              style={{
-                width: "100%",
-                padding: "8px",
-                border: "1px solid #ccc",
-                borderRadius: "4px",
-              }}
-              required
-            />
+            <div>
+              <label style={{ marginRight: "10px" }}>
+                <input
+                  type="checkbox"
+                  name="equalToPrincipal"
+                  checked={formValues.equalToPrincipal}
+                  onChange={handleInputChange}
+                />
+                Equal to each year principal amount
+              </label>
+            </div>
+            {!formValues.equalToPrincipal && (
+              <div style={{ marginTop: "10px" }}>
+                <label
+                  htmlFor="yearlyExtraPayment"
+                  style={{
+                    display: "block",
+                    fontWeight: "500",
+                    marginBottom: "5px",
+                  }}
+                >
+                  Custom Value (€)
+                </label>
+                <input
+                  type="number"
+                  id="yearlyExtraPayment"
+                  name="yearlyExtraPayment"
+                  value={formValues.yearlyExtraPayment}
+                  onChange={handleInputChange}
+                  style={{
+                    width: "100%",
+                    padding: "8px",
+                    border: "1px solid #ccc",
+                    borderRadius: "4px",
+                  }}
+                  step="0.01"
+                />
+              </div>
+            )}
           </div>
           <button
             type="submit"

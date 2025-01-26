@@ -1,5 +1,6 @@
 import React from "react";
 import LoanAccumulationData from "./LoanAccumulationData";
+import ShowAmount from "./showAmoount";
 
 export default function LoanDataGrid({ data }) {
   return (
@@ -66,33 +67,18 @@ export default function LoanDataGrid({ data }) {
             >
               {index + 1}
             </div>
-            <div
-              style={{
-                padding: "5px",
-                borderBottom: "1px solid #eee",
-                backgroundColor: index % 2 === 1 ? "#f9f9f9" : "#fff",
-              }}
-            >
-              {row.principal.toFixed(2)} €
-            </div>
-            <div
-              style={{
-                padding: "5px",
-                borderBottom: "1px solid #eee",
-                backgroundColor: index % 2 === 1 ? "#f9f9f9" : "#fff",
-              }}
-            >
-              {row.interest.toFixed(2)} €
-            </div>
-            <div
-              style={{
-                padding: "5px",
-                borderBottom: "1px solid #eee",
-                backgroundColor: index % 2 === 1 ? "#f9f9f9" : "#fff",
-              }}
-            >
-              {(row.principal + row.interest).toFixed(2)} €
-            </div>
+            <ShowAmount
+              backgroundColor={index % 2 === 1 ? "#f9f9f9" : "#fff"}
+              amount={row.principal}
+            />
+            <ShowAmount
+              backgroundColor={index % 2 === 1 ? "#f9f9f9" : "#fff"}
+              amount={row.interest.toFixed(2)}
+            />
+            <ShowAmount
+              backgroundColor={index % 2 === 1 ? "#f9f9f9" : "#fff"}
+              amount={(row.principal + row.interest).toFixed(2)}
+            />
           </React.Fragment>
         ))}
       </div>

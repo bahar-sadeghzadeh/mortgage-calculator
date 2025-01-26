@@ -1,4 +1,5 @@
 import React from "react";
+import ShowAmount from "./showAmoount";
 
 export default function LoanAccumulationData({ data }) {
   return (
@@ -55,45 +56,24 @@ export default function LoanAccumulationData({ data }) {
           backgroundColor: "#fff",
         }}
       ></div>
-      <div
-        style={{
-          padding: "5px",
-          borderBottom: "1px solid #eee",
-          backgroundColor: "#fff",
-        }}
-      >
-        {data
+      <ShowAmount
+        amount={data
           .map((d) => d.principal)
           .reduce((a, b) => a + b, 0)
-          .toFixed(2)}{" "}
-        €
-      </div>
-      <div
-        style={{
-          padding: "5px",
-          borderBottom: "1px solid #eee",
-          backgroundColor: "#fff",
-        }}
-      >
-        {data
+          .toFixed(2)}
+      />
+      <ShowAmount
+        amount={data
           .map((d) => d.interest)
           .reduce((a, b) => a + b, 0)
-          .toFixed(2)}{" "}
-        €
-      </div>
-      <div
-        style={{
-          padding: "5px",
-          borderBottom: "1px solid #eee",
-          backgroundColor: "#fff",
-        }}
-      >
-        {data
+          .toFixed(2)}
+      />
+      <ShowAmount
+        amount={data
           .map((d) => d.principal + d.interest)
           .reduce((a, b) => a + b, 0)
-          .toFixed(2)}{" "}
-        €
-      </div>
+          .toFixed(2)}
+      />
     </div>
   );
 }
