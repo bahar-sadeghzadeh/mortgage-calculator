@@ -6,7 +6,7 @@ export default function LoanAccumulationData({ data }) {
     <div
       style={{
         display: "grid",
-        gridTemplateColumns: "1fr 1fr 1fr 1fr",
+        gridTemplateColumns: "1fr 1fr 1fr",
         gap: "10px",
         margin: "20px auto",
         border: "1px solid #ccc",
@@ -15,13 +15,6 @@ export default function LoanAccumulationData({ data }) {
       }}
     >
       {/* Header Row */}
-      <div
-        style={{
-          fontWeight: "bold",
-          borderBottom: "1px solid #ccc",
-          padding: "5px",
-        }}
-      ></div>
       <div
         style={{
           fontWeight: "bold",
@@ -49,13 +42,6 @@ export default function LoanAccumulationData({ data }) {
       >
         Total Installments
       </div>
-      <div
-        style={{
-          padding: "5px",
-          borderBottom: "1px solid #eee",
-          backgroundColor: "#fff",
-        }}
-      ></div>
       <ShowAmount
         amount={data
           .map((d) => d.principal)

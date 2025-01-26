@@ -54,16 +54,6 @@ export default function LoanForm() {
     );
   };
 
-  const isFormValid = () => {
-    return (
-      formValues.interestRate !== "" &&
-      formValues.tilgung !== "" &&
-      formValues.loanAmount !== "" &&
-      formValues.installmentCount !== "" &&
-      formValues.yearlyExtraPayment !== ""
-    );
-  };
-
   return (
     <>
       <div
@@ -100,7 +90,7 @@ export default function LoanForm() {
               value={formValues.interestRate}
               onChange={handleInputChange}
               style={{
-                width: "100%",
+                width: "-webkit-fill-available",
                 padding: "8px",
                 border: "1px solid #ccc",
                 borderRadius: "4px",
@@ -127,7 +117,7 @@ export default function LoanForm() {
               value={formValues.tilgung}
               onChange={handleInputChange}
               style={{
-                width: "100%",
+                width: "-webkit-fill-available",
                 padding: "8px",
                 border: "1px solid #ccc",
                 borderRadius: "4px",
@@ -154,7 +144,7 @@ export default function LoanForm() {
               value={formValues.loanAmount}
               onChange={handleInputChange}
               style={{
-                width: "100%",
+                width: "-webkit-fill-available",
                 padding: "8px",
                 border: "1px solid #ccc",
                 borderRadius: "4px",
@@ -180,7 +170,7 @@ export default function LoanForm() {
               value={formValues.installmentCount}
               onChange={handleInputChange}
               style={{
-                width: "100%",
+                width: "-webkit-fill-available",
                 padding: "8px",
                 border: "1px solid #ccc",
                 borderRadius: "4px",
@@ -228,7 +218,7 @@ export default function LoanForm() {
                   value={formValues.yearlyExtraPayment}
                   onChange={handleInputChange}
                   style={{
-                    width: "100%",
+                    width: "-webkit-fill-available",
                     padding: "8px",
                     border: "1px solid #ccc",
                     borderRadius: "4px",
